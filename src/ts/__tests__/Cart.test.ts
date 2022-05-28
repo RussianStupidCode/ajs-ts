@@ -10,7 +10,7 @@ test('new card should be empty', () => {
 
 test('add movie', () => {
   const cart = new Cart();
-  const movie = new Movie(0, 2017, "avengers", "USA", ["Epic", "Adventure"], 137, "empty", 100);
+  const movie = new Movie(0, 2017, 'avengers', 'USA', ['Epic', 'Adventure'], 137, 'empty', 100);
 
   cart.add(movie);
 
@@ -22,11 +22,11 @@ test('add movie', () => {
       id: 0,
       isMany: false,
       year: 2017,
-      name: "avengers",
-      country: "USA",
-      jenre: ["Epic", "Adventure"],
+      name: 'avengers',
+      country: 'USA',
+      jenre: ['Epic', 'Adventure'],
       duration: 137,
-      tagline: "empty",
+      tagline: 'empty',
       price: 100,
     },
     count: 1,
@@ -35,7 +35,7 @@ test('add movie', () => {
 
 test('add exist goods', () => {
   const cart = new Cart();
-  const movie = new Movie(0, 2017, "avengers", "USA", ["Epic", "Adventure"], 137, "empty", 100);
+  const movie = new Movie(0, 2017, 'avengers', 'USA', ['Epic', 'Adventure'], 137, 'empty', 100);
 
   cart.add(movie);
   cart.add(movie);
@@ -46,31 +46,31 @@ test('add exist goods', () => {
 const TOTAL_COST_DATA = [
   {
     items: [
-      new Movie(0, 2017, "avengers", "USA", ["Epic", "Adventure"], 137, "empty", 100),
-      new Phone(1, "nokia", 1000),
-      new Phone(1, "nokia", 1000),
-      new Phone(1, "nokia", 1000),
+      new Movie(0, 2017, 'avengers', 'USA', ['Epic', 'Adventure'], 137, 'empty', 100),
+      new Phone(1, 'nokia', 1000),
+      new Phone(1, 'nokia', 1000),
+      new Phone(1, 'nokia', 1000),
     ],
     discount: 50,
     totalCost: 1550, 
   },
   {
     items: [
-      new Movie(0, 2017, "avengers", "USA", ["Epic", "Adventure"], 137, "empty", 100),
-      new Movie(0, 2017, "avengers", "USA", ["Epic", "Adventure"], 137, "empty", 100),
-      new Phone(1, "nokia", 1000),
-      new Phone(1, "nokia", 1000),
-      new Phone(1, "nokia", 1000),
+      new Movie(0, 2017, 'avengers', 'USA', ['Epic', 'Adventure'], 137, 'empty', 100),
+      new Movie(0, 2017, 'avengers', 'USA', ['Epic', 'Adventure'], 137, 'empty', 100),
+      new Phone(1, 'nokia', 1000),
+      new Phone(1, 'nokia', 1000),
+      new Phone(1, 'nokia', 1000),
     ],
     discount: 50,
     totalCost: 1550, 
   },
   {
     items: [
-      new Movie(0, 2017, "avengers", "USA", ["Epic", "Adventure"], 137, "empty", 100),
-      new Phone(1, "nokia", 1000),
-      new Phone(1, "nokia", 1000),
-      new Phone(1, "nokia", 1000),
+      new Movie(0, 2017, 'avengers', 'USA', ['Epic', 'Adventure'], 137, 'empty', 100),
+      new Phone(1, 'nokia', 1000),
+      new Phone(1, 'nokia', 1000),
+      new Phone(1, 'nokia', 1000),
     ],
     discount: 30,
     totalCost: 2170, 
@@ -87,11 +87,23 @@ handlerTotalCost ('test total cost', ({items, discount, totalCost}) => {
   expect(actualCost).toBeCloseTo(totalCost);
 });
 
-test("remove items", () => {
+test('total cost default discount', () => {
   const cart = new Cart();
-  const movie = new Movie(0, 2017, "avengers", "USA", ["Epic", "Adventure"], 137, "empty", 100);
-  const phone = new Phone(1, "nokia", 1000);
-  const noExistPhone = new Phone(22, "nokia", 1000);
+  const movie = new Movie(0, 2017, 'avengers', 'USA', ['Epic', 'Adventure'], 137, 'empty', 100);
+  const phone = new Phone(1, 'nokia', 1000);
+
+  cart.add(movie);
+  cart.add(phone);
+
+  const actualCost = cart.getTotalCost();
+  expect(actualCost).toBeCloseTo(1100);
+});
+
+test('remove items', () => {
+  const cart = new Cart();
+  const movie = new Movie(0, 2017, 'avengers', 'USA', ['Epic', 'Adventure'], 137, 'empty', 100);
+  const phone = new Phone(1, 'nokia', 1000);
+  const noExistPhone = new Phone(22, 'iphone', 1000);
   cart.add(movie, 2);
   cart.add(phone);
   cart.add(phone, 10);
