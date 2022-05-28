@@ -25,16 +25,16 @@ export default class Cart {
         this._addNewGoods(item);
     }
 
-    remove(item: Buyable, count: number = Infinity): void {
-        const goods = this._items.get(item.id);
+    remove(id: number, count: number = Infinity): void {
+        const goods = this._items.get(id);
         if(goods === undefined) {
             return;
         }
 
         this._changeCount(goods, -count);
 
-        if (!item.isMany || goods.count < 1) {
-            this._items.delete(item.id);
+        if (!goods.item.isMany || goods.count < 1) {
+            this._items.delete(id);
         }
     }
 

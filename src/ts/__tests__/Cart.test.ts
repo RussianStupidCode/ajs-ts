@@ -108,9 +108,9 @@ test('remove items', () => {
   cart.add(phone);
   cart.add(phone, 10);
 
-  cart.remove(movie);
-  cart.remove(phone);
-  cart.remove(noExistPhone);
+  cart.remove(movie.id);
+  cart.remove(phone.id);
+  cart.remove(noExistPhone.id);
 
   expect(cart.items).toEqual([]);
 });
