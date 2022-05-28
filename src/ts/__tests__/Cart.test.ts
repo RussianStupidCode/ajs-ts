@@ -24,7 +24,7 @@ test('add movie', () => {
       year: 2017,
       name: 'avengers',
       country: 'USA',
-      jenre: ['Epic', 'Adventure'],
+      genres: ['Epic', 'Adventure'],
       duration: 137,
       tagline: 'empty',
       price: 100,
