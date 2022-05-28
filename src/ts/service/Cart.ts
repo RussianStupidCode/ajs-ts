@@ -38,7 +38,7 @@ export default class Cart {
         }
     }
 
-    getTotalCost(discountPercent: number): number {
+    getTotalCost(discountPercent: number = 0): number {
         const priceCoeff: number = (100 - discountPercent) / 100;
         return this.items.reduce((accum, goods) => accum + goods.count * goods.item.price * priceCoeff, 0);
     }
